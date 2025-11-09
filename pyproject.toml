@@ -2,6 +2,9 @@
 name = "redirect-serv"
 version = "0.1.0"
 
+[tool.poetry]
+packages = [{ include = "redirect_serv", from = "src" }]
+
 [tool.poetry.dependencies]
 python = "3.13.*"
 fastapi = "^0.121.1"
@@ -17,12 +20,15 @@ greenlet = "^3.2.4"
 black = "^25.9.0"
 pre-commit = ">=4.4.0,<5.0.0"
 isort = "^7.0.0"
-pytest = "^9.0.0"
+pytest = ">=7.4,<9"
+pytest-asyncio = ">=0.21,<1.0"
 pytest-cov = "^7.0.0"
 flake8 = "^7.3.0"
 bandit = "^1.8.6"
 mypy = "^1.18.2"
 pylint = "^4.0.2"
+httpx = ">=0.25,<1.0"
+aiosqlite = ">=0.19,<1.0"
 
 
 [build-system]
