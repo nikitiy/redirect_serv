@@ -13,10 +13,6 @@ class DBSettings:
         self.user = os.environ["SQL_USER"]
         self.password = os.environ["SQL_PASSWORD"]
 
-        self.refresh_token_expire_days = int(
-            os.environ.get("REFRESH_TOKEN_EXPIRE_DAYS", "7")
-        )
-
     @property
     def ASYNC_DATABASE_URL(self) -> str:  # noqa
         return f"postgresql+asyncpg://{self.user}:{self.password}@{self.host}:{self.port}/{self.database}"
@@ -37,5 +33,11 @@ class CorsSettings:
         self.allow_headers = os.environ.get("CORS_ALLOW_HEADERS", "*").split(",")
 
 
+class BaseSettings:
+    def __init__(self):
+        self.guest_serv_domain = os.environ.get("GUEST_SERV_DOMAIN", "localhost")
+
+
 db_settings = DBSettings()
 cors_settings = CorsSettings()
+base_settings = BaseSettings()
