@@ -10,6 +10,7 @@ sqlalchemy = "^2.0.44"
 asyncpg = "^0.30.0"
 asyncio = "^4.0.0"
 python-dotenv = "^1.2.1"
+uvicorn = "^0.38.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^25.9.0"
