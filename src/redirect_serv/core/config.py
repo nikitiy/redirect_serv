@@ -34,8 +34,19 @@ class CorsSettings:
 
 
 class BaseSettings:
+    _LOCAL_DOMAINS = {"localhost", "127.0.0.1"}
+
     def __init__(self):
         self.guest_serv_domain = os.environ.get("GUEST_SERV_DOMAIN", "localhost")
+        use_https_env = os.environ.get("USE_HTTPS")
+        if use_https_env is not None:
+            self.use_https = use_https_env.lower() == "true"
+        else:
+            self.use_https = self.guest_serv_domain not in self._LOCAL_DOMAINS
+
+    @property
+    def redirect_protocol(self) -> str:
+        return "https" if self.use_https else "http"
 
 
 db_settings = DBSettings()

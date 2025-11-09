@@ -4,6 +4,7 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
+from src.redirect_serv.apps.company.models.company_branch import CompanyBranch
 from src.redirect_serv.apps.qr_manager.models import QRCode
 
 
@@ -15,7 +16,9 @@ class QRCodeRepository:
         result = await self.session.execute(
             select(QRCode)
             .where(QRCode.url_hash == url_hash)
-            .options(selectinload(QRCode.company_branch).selectinload("company"))
+            .options(
+                selectinload(QRCode.company_branch).selectinload(CompanyBranch.company)
+            )
         )
         return result.scalar_one_or_none()
 

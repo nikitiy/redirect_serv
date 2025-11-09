@@ -16,7 +16,9 @@ class QRCodeApplication:
         )
 
         subdomain = company_branch.company.subdomain
-        redirect_url = f"https://{subdomain}.{base_settings.guest_serv_domain}/"
+        domain = base_settings.guest_serv_domain
+        protocol = base_settings.redirect_protocol
+        redirect_url = f"{protocol}://{subdomain}.{domain}/"
 
         response = RedirectResponse(url=redirect_url, status_code=302)
         response.set_cookie(
@@ -24,8 +26,8 @@ class QRCodeApplication:
             value=str(company_branch.id),
             max_age=86400 * 30,  # 30 days
             httponly=True,
-            secure=True,  # HTTPS only
-            samesite="lax",  # CSRF protection
+            secure=base_settings.use_https,
+            samesite="lax",
         )
 
         return response
