@@ -3,6 +3,10 @@ name = "redirect-serv"
 version = "0.1.0"
 
 [tool.poetry]
+name = "redirect-serv"
+version = "0.1.0"
+description = "Redirect service"
+authors = ["Lya <admin@lya.com>"]
 packages = [{ include = "redirect_serv", from = "src" }]
 
 [tool.poetry.dependencies]

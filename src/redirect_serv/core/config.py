@@ -7,11 +7,11 @@ load_dotenv()
 
 class DBSettings:
     def __init__(self):
-        self.host = os.environ["SQL_HOST"]
-        self.port = os.environ["SQL_PORT"]
-        self.database = os.environ["SQL_DATABASE"]
-        self.user = os.environ["SQL_USER"]
-        self.password = os.environ["SQL_PASSWORD"]
+        self.host = os.environ["POSTGRES_HOST"]
+        self.port = os.environ["POSTGRES_PORT"]
+        self.database = os.environ["POSTGRES_DATABASE"]
+        self.user = os.environ["POSTGRES_USER"]
+        self.password = os.environ["POSTGRES_PASSWORD"]
 
     @property
     def ASYNC_DATABASE_URL(self) -> str:  # noqa
