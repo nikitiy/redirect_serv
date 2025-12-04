@@ -7,15 +7,15 @@ services:
     env_file:
       - .env
     environment:
-      SQL_HOST: ${POSTGRES_HOST}
-      SQL_PORT: ${POSTGRES_PORT}
+      POSTGRES_HOST: ${POSTGRES_HOST}
+      POSTGRES_PORT: ${POSTGRES_PORT}
     volumes:
       - ./src:/app/src
     restart: unless-stopped
     networks:
       - lya_network
     expose:
-      - "8000"
+      - "8002"
 
 networks:
   lya_network:

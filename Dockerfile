@@ -18,10 +18,10 @@ COPY . .
 RUN poetry install --only main && rm -rf $POETRY_CACHE_DIR
 
 # Expose port
-EXPOSE 8000
+EXPOSE 8002
 
 # Add venv to PATH for direct access
 ENV PATH="/app/.venv/bin:$PATH"
 
 # Run the application with root_path for reverse proxy
-CMD ["uvicorn", "src.redirect_serv.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "src.redirect_serv.main:app", "--host", "0.0.0.0", "--port", "8002"]
